@@ -26,7 +26,19 @@ jobs:
       - name: Generate Android Scaffold (if missing)
         run: |
           if [ ! -f "android/app/build.gradle" ] && [ ! -f "android/app/build.gradle.kts" ]; then
-            flutter create --platforms=android --org com.example --project-name whatsapp_media_cleaner .
+            if [ -f "android/app/src/main/AndroidManifest.xml" ]; then
+              cp android/app/src/main/AndroidManifest.xml /tmp/custom-AndroidManifest.xml
+            fi
+
+            flutter create --platforms=android --org com.example --project-name whatsapp_media_cleaner _android_scaffold
+
+            rm -rf android
+            mv _android_scaffold/android ./android
+            rm -rf _android_scaffold
+
+            if [ -f "/tmp/custom-AndroidManifest.xml" ]; then
+              cp /tmp/custom-AndroidManifest.xml android/app/src/main/AndroidManifest.xml
+            fi
           fi
 
       - name: Install Dependencies
