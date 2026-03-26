@@ -1,0 +1,26 @@
+name: whatsapp_media_cleaner
+description: Privacy-first WhatsApp media cleaning app (MVP).
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  path_provider: ^2.1.5
+  permission_handler: ^11.3.1
+  filesize: ^2.0.1
+  intl: ^0.20.2
+  crypto: ^3.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
